@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AETHERIS // PRO CONTROL STUDIO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#030407; color:#f8fafc; font-family:'Inter', sans-serif; padding:30px 40px; }
+    
+    /* Top Header */
+    .studio-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      padding-bottom: 20px; margin-bottom: 30px;
+    }
+    .brand-title { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: #ffb703; }
+    .brand-title span { color: #00f0ff; font-family: 'JetBrains Mono'; font-size: 0.9rem; margin-left: 8px; }
+    .status-badge { font-family: 'JetBrains Mono'; font-size: 0.78rem; color: #00ff66; display: flex; align-items: center; gap: 8px; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: #00ff66; box-shadow: 0 0 10px #00ff66; }
+
+    /* Studio Grid Layout */
+    .studio-grid { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 36px; }
+    
+    .card {
+      background: #080c14; border: 1px solid #1a2233; border-radius: 8px; padding: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+    .card-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; color: #fff; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .card-title small { font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #00f0ff; }
+
+    /* Form Styles */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #00f0ff; margin-bottom: 8px; letter-spacing: 0.05em; }
+    input, textarea, select {
+      width: 100%; background: #04060a; border: 1px solid #1e293b; padding: 12px 14px;
+      border-radius: 4px; color: #fff; font-family: inherit; font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: #00f0ff; outline: none; }
+    
+    .btn-submit {
+      background: #ffb703; color: #000; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+      font-size: 0.9rem; border: none; padding: 16px; border-radius: 4px; cursor: pointer;
+      width: 100%; margin-top: 10px; transition: all 0.2s;
+    }
+    .btn-submit:hover { background: #ffc300; transform: translateY(-2px); box-shadow: 0 0 20px rgba(255,183,3,0.3); }
+
+    /* YouTube Live Preview Box */
+    .yt-preview-box {
+      background: #04060a; border: 1px dashed rgba(0, 240, 255, 0.3); border-radius: 6px;
+      padding: 16px; margin-top: 12px; display: none; text-align: center;
+    }
+    .yt-preview-box.active { display: block; }
+    .yt-frame-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
+    .yt-frame-container iframe { position: absolute; top:0; left:0; width:100%; height:100%; }
+
+    /* Project Inventory List */
+    .proj-item {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #04060a; border: 1px solid #1a2233; border-radius: 6px;
+      padding: 16px; margin-bottom: 12px; transition: border-color 0.2s;
+    }
+    .proj-item:hover { border-color: #00f0ff; }
+    .proj-name { font-weight: 700; color: #fff; font-size: 1.05rem; }
+    .proj-meta { font-family: 'JetBrains Mono'; font-size: 0.72rem; color: #94a3b8; margin-top: 4px; }
+    
+    .btn-group { display: flex; gap: 8px; }
+    .btn-edit { background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; color: #00f0ff; padding: 6px 14px; font-family: 'JetBrains Mono'; font-size: 0.75rem; border-radius: 3px; cursor: pointer; }
+    .btn-edit:hover { background: #00f0ff; color: #000; }
+    .btn-del { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #ef4444; padding: 6px 14px; font-family: 'JetBrains Mono'; font-size: 0.75rem; border-radius: 3px; cursor: pointer; }
+    .btn-del:hover { background: #ef4444; color: #fff; }
+
+    @media (max-width: 1024px) {
+      .studio-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Studio Header -->
+  <header class="studio-header">
+    <div class="brand-title">
+      ◈ AETHERIS PRO STUDIO <span>// WALEED RAJPOOT</span>
+    </div>
+    <div class="status-badge">
+      <span class="pulse"></span>
+      <span>LOCAL HOST ACTIVE (PORT 4000)</span>
+    </div>
+  </header>
+
+  <div class="studio-grid">
+
+    <!-- LEFT: PROJECT CREATE / EDIT FORM -->
+    <div class="card">
+      <div class="card-title">
+        <span id="form-heading">CREATE NEW PROJECT RECORD</span>
+        <small id="form-mode">[MODE: NEW]</small>
+      </div>
+
+      <form id="project-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>PROJECT ID (Slug, e.g. "my-saas") *</label>
+            <input type="text" id="id" required placeholder="business-os">
+          </div>
+          <div class="form-group">
+            <label>PROJECT TITLE *</label>
+            <input type="text" id="title" required placeholder="BusinessOS">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>CATEGORY</label>
+            <input type="text" id="category" placeholder="SaaS / Enterprise, Offline-First, P2P">
+          </div>
+          <div class="form-group">
+            <label>DEVELOPMENT STATUS</label>
+            <select id="status">
+              <option value="Verified / Functional">Verified / Functional</option>
+              <option value="In Development">In Development</option>
+              <option value="Experimental Prototype">Experimental Prototype</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>IMPACTFUL TAGLINE (1-Liner Summary)</label>
+          <input type="text" id="tagline" placeholder="Multi-tenant business management with Row-Level Security">
+        </div>
+
+        <div class="form-group">
+          <label>TECH STACK (Comma-separated)</label>
+          <input type="text" id="techStack" placeholder="React, Vite, Node.js, Fastify, Supabase, PostgreSQL, RLS">
+        </div>
+
+        <!-- YouTube Video Field & Live Preview -->
+        <div class="form-group">
+          <label>YOUTUBE VIDEO ID (e.g. dQw4w9WgXcQ or Full Link)</label>
+          <input type="text" id="youtubeId" placeholder="Paste YouTube link or ID (Leave empty if none)">
+          <div class="yt-preview-box" id="yt-preview">
+            <div style="font-family:'JetBrains Mono'; font-size:0.75rem; color:#ffb703; margin-bottom:8px;">WALKTHROUGH LIVE PREVIEW:</div>
+            <div class="yt-frame-container">
+              <iframe id="yt-frame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>THE CORE PROBLEM BEING SOLVED</label>
+          <textarea id="problem" rows="3" placeholder="Explain the real operational or security friction..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>ENGINEERED ARCHITECTURE & SOLUTION</label>
+          <textarea id="solution" rows="3" placeholder="Explain how your code solves the problem..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>GITHUB REPOSITORY URL</label>
+            <input type="text" id="githubUrl" placeholder="https://github.com/waleedrajpootcode/...">
+          </div>
+          <div class="form-group">
+            <label>LIVE DEMO URL (Optional)</label>
+            <input type="text" id="demoUrl" placeholder="https://...">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">SYNC & SAVE PROJECT TO PORTFOLIO</button>
+      </form>
+    </div>
+
+    <!-- RIGHT: ACTIVE REPOSITORIES LIST -->
+    <div class="card">
+      <div class="card-title">
+        <span>ACTIVE SYSTEM REPOSITORIES</span>
+        <small id="project-count">0 SYSTEMS</small>
+      </div>
+
+      <div id="project-list">
+        <p style="color:#64748b; font-family:'JetBrains Mono';">Loading active projects...</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentProjects = [];
+
+    // Helper: Extract YouTube ID from link or raw ID
+    function extractYoutubeId(val) {
+      if (!val) return '';
+      val = val.trim();
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = val.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : val;
+    }
+
+    // Live YouTube Preview trigger
+    document.getElementById('youtubeId').addEventListener('input', (e) => {
+      const ytid = extractYoutubeId(e.target.value);
+      const box = document.getElementById('yt-preview');
+      const frame = document.getElementById('yt-frame');
+      if (ytid && ytid.length === 11) {
+        frame.src = `https://www.youtube.com/embed/${ytid}`;
+        box.classList.add('active');
+      } else {
+        frame.src = '';
+        box.classList.remove('active');
+      }
+    });
+
+    // Load all projects from local server
+    async function loadProjects() {
+      try {
+        const res = await fetch('http://localhost:4000/api/data');
+        const data = await res.json();
+        currentProjects = data.projects || [];
+
+        document.getElementById('project-count').innerText = `${currentProjects.length} SYSTEMS`;
+        const list = document.getElementById('project-list');
+
+        if (currentProjects.length === 0) {
+          list.innerHTML = `<p style="color:#64748b; font-family:'JetBrains Mono';">No projects recorded yet.</p>`;
+          return;
+        }
+
+        list.innerHTML = currentProjects.map(p => `
+          <div class="proj-item">
+            <div>
+              <div class="proj-name">${p.title}</div>
+              <div class="proj-meta">${p.category} | <span style="color:#ffb703;">${p.status}</span></div>
+            </div>
+            <div class="btn-group">
+              <button class="btn-edit" onclick="editProject('${p.id}')">EDIT</button>
+              <button class="btn-del" onclick="deleteProject('${p.id}')">DEL</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        document.getElementById('project-list').innerHTML = `<p style="color:#ef4444; font-family:'JetBrains Mono';">Server not reachable. Run 'node server.js'</p>`;
+      }
+    }
+
+    // Edit project: Populate form
+    window.editProject = function(id) {
+      const p = currentProjects.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('id').value = p.id;
+      document.getElementById('id').readOnly = true; // Don't change slug during edit
+      document.getElementById('title').value = p.title || '';
+      document.getElementById('category').value = p.category || '';
+      document.getElementById('status').value = p.status || 'Verified / Functional';
+      document.getElementById('tagline').value = p.tagline || '';
+      document.getElementById('techStack').value = (p.techStack || []).join(', ');
+      document.getElementById('youtubeId').value = p.youtubeId || '';
+      document.getElementById('problem').value = p.problem || '';
+      document.getElementById('solution').value = p.solution || '';
+      document.getElementById('githubUrl').value = p.githubUrl || '';
+      document.getElementById('demoUrl').value = p.demoUrl || '';
+
+      document.getElementById('form-heading').innerText = `EDITING: ${p.title.toUpperCase()}`;
+      document.getElementById('form-mode').innerText = `[MODE: EDITING]`;
+      document.getElementById('btn-submit').innerText = `SAVE UPDATES TO ${p.title.toUpperCase()}`;
+
+      // Trigger video preview if exists
+      const ytid = extractYoutubeId(p.youtubeId);
+      const box = document.getElementById('yt-preview');
+      const frame = document.getElementById('yt-frame');
+      if (ytid && ytid.length === 11) {
+        frame.src = `https://www.youtube.com/embed/${ytid}`;
+        box.classList.add('active');
+      } else {
+        box.classList.remove('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Form Submit: Save or Update
+    document.getElementById('project-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const ytid = extractYoutubeId(document.getElementById('youtubeId').value);
+
+      const project = {
+        id: document.getElementById('id').value.trim(),
+        title: document.getElementById('title').value.trim(),
+        category: document.getElementById('category').value.trim(),
+        status: document.getElementById('status').value,
+        tagline: document.getElementById('tagline').value.trim(),
+        techStack: document.getElementById('techStack').value.split(',').map(s => s.trim()).filter(Boolean),
+        youtubeId: ytid,
+        problem: document.getElementById('problem').value.trim(),
+        solution: document.getElementById('solution').value.trim(),
+        githubUrl: document.getElementById('githubUrl').value.trim(),
+        demoUrl: document.getElementById('demoUrl').value.trim()
+      };
+
+      try {
+        const res = await fetch('http://localhost:4000/api/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(project)
+        });
+        const result = await res.json();
+        alert(result.message || 'Project saved successfully!');
+
+        // Reset Form
+        document.getElementById('project-form').reset();
+        document.getElementById('id').readOnly = false;
+        document.getElementById('form-heading').innerText = 'CREATE NEW PROJECT RECORD';
+        document.getElementById('form-mode').innerText = '[MODE: NEW]';
+        document.getElementById('btn-submit').innerText = 'SYNC & SAVE PROJECT TO PORTFOLIO';
+        document.getElementById('yt-preview').classList.remove('active');
+
+        loadProjects();
+      } catch (err) {
+        alert('Error saving project. Is the server running?');
+      }
+    });
+
+    // Delete Project
+    window.deleteProject = async function(id) {
+      if (!confirm(`Are you sure you want to delete '${id}'? This cannot be undone.`)) return;
+      try {
+        await fetch(`http://localhost:4000/api/projects/${id}`, { method: 'DELETE' });
+        loadProjects();
+      } catch (err) {
+        alert('Failed to delete project');
+      }
+    };
+
+    loadProjects();
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* CRT Cyber Scanline Overlay */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* 3D WebGL Canvas */
+#canvas3d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Real-Time Cyber Coordinate Tracker */
+#hud-coordinates {
+  position: fixed;
+  bottom: 16px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: 4px;
+  z-index: 1000;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+/* Glitch text style */
+.scramble-glitch {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 8px var(--accent-cyan);
+  font-weight: 800;
+}
+
+#app-view {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding-top: 75px;
+}

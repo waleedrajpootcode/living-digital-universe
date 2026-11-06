@@ -1,0 +1,91 @@
+{
+  "developer": {
+    "name": "Waleed Rajpoot",
+    "headline": "Full-Stack Software Developer & Systems Architect",
+    "subheadline": "SaaS & AI Product Builder",
+    "location": "Sheikhupura, Punjab, Pakistan",
+    "availability": "Available for Global Remote Roles & SaaS Architecture",
+    "email": "waleedrajpoot0096w@gmail.com",
+    "phone": "+92 309 4686025",
+    "github": "https://github.com/waleedrajpootcode",
+    "linkedin": "https://www.linkedin.com/in/waleed-rajpoot-642842403/",
+    "avatar": "assets/images/waleed.jpg"
+  },
+  "projects": [
+    {
+      "id": "business-os",
+      "title": "BusinessOS",
+      "category": "SaaS / Enterprise",
+      "tagline": "Multi-Tenant Business Management & Intelligence System",
+      "status": "In Development",
+      "featured": true,
+      "techStack": ["React", "Vite", "Node.js", "Express", "Supabase", "PostgreSQL", "RLS"],
+      "problem": "SMEs deal with fragmented, insecure operational tools lacking granular data isolation.",
+      "solution": "Engineered a scalable multi-tenant architecture with Row-Level Security (RLS) guaranteeing tenant data isolation.",
+      "githubUrl": "https://github.com/waleedrajpootcode/BusinessOS.git",
+      "demoUrl": "",
+      "youtubeId": "",
+      "coverImage": "assets/images/businessos-cover.webp"
+    },
+    {
+      "id": "school-office-assistant",
+      "title": "School Office Assistant",
+      "category": "Offline-First / Desktop",
+      "tagline": "Resilient Offline-First Institutional Management System",
+      "status": "Verified / Functional",
+      "featured": true,
+      "techStack": ["React", "TypeScript", "Vite", "Node.js", "Fastify", "SQLite"],
+      "problem": "Schools in intermittent-connectivity zones lose access to cloud-only management tools.",
+      "solution": "Built an offline-first LAN application utilizing local SQLite, automated role permissions, and instant fee workflows.",
+      "githubUrl": "https://github.com/waleedrajpootcode/SchoolOfficeAssistant.git",
+      "demoUrl": "",
+      "youtubeId": "",
+      "coverImage": "assets/images/school-cover.webp"
+    },
+    {
+      "id": "ghostchat-p2p",
+      "title": "Ghostchat P2P",
+      "category": "Real-Time / Systems",
+      "tagline": "Peer-to-Peer Encrypted Real-Time Communication Pipeline",
+      "status": "In Development",
+      "featured": true,
+      "techStack": ["WebRTC", "JavaScript", "HTML5", "Node Signaling"],
+      "problem": "Centralized messaging architectures expose communication metadata to intermediary servers.",
+      "solution": "Architected direct peer-to-peer audio, video, screen share, and data transfers over WebRTC mesh connections.",
+      "githubUrl": "https://github.com/waleedrajpootcode/Ghostchat-p2p.git",
+      "demoUrl": "",
+      "youtubeId": "",
+      "coverImage": "assets/images/ghostchat-cover.webp"
+    },
+    {
+      "id": "voxstudio-ai",
+      "title": "VoxStudio AI",
+      "category": "AI / Audio Engineering",
+      "tagline": "Voice Synthesis & Speech Intelligence Workbench",
+      "status": "In Development",
+      "featured": false,
+      "techStack": ["Python", "Flask", "Web Audio API", "JavaScript"],
+      "problem": "Complex audio synthesis requires intuitive workflows with low-latency client-side playback.",
+      "solution": "Created an AI-assisted voice processing pipeline integrating Web Audio playback with backend Python inference.",
+      "githubUrl": "https://github.com/waleedrajpootcode/voxstudio-ai.git",
+      "demoUrl": "",
+      "youtubeId": "",
+      "coverImage": "assets/images/voxstudio-cover.webp"
+    },
+    {
+      "id": "rrawstudio",
+      "title": "RRAWStudio",
+      "category": "AI / Creative Automation",
+      "tagline": "AI-Assisted Animation Production Engine",
+      "status": "Experimental Prototype",
+      "featured": false,
+      "techStack": ["JavaScript", "Python", "Automation Pipelines"],
+      "problem": "Traditional 2D/3D asset animation workflows require heavy manual keyframing.",
+      "solution": "Building procedural automation sequences to accelerate digital animation rendering.",
+      "githubUrl": "https://github.com/waleedrajpootcode/RRAWStudio.git",
+      "demoUrl": "",
+      "youtubeId": "",
+      "coverImage": "assets/images/rrawstudio-cover.webp"
+    }
+  ]
+}
