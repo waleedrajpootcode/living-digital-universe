@@ -3361,3 +3361,160 @@
     transition-duration: 0.01ms !important;
   }
 }
+/* ==========================================================================
+   FINAL 100% BULLETPROOF MOBILE RESPONSIVE FIX (APPEND ONLY)
+   ========================================================================== */
+
+/* 1. Prevent Any Horizontal Screen Leak */
+html, body {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* 2. Mobile Hero & Shard Auto-Fit (Below 600px) */
+@media (max-width: 600px) {
+  /* Title fits perfectly on small phones */
+  .glitch-hero-title {
+    font-size: 2.2rem !important;
+    line-height: 1.1 !important;
+    word-break: break-word !important;
+  }
+
+  .deck-section-heading h2,
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+
+  /* Buttons stack vertically so they never push screen */
+  .deck-hero-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .cyber-btn-primary, 
+  .cyber-btn-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+  }
+
+  /* Shard fits any small phone screen (iPhone SE / Android) */
+  .shard-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 12px !important;
+  }
+
+  .shard-image-container {
+    height: 320px !important;
+  }
+
+  /* Telemetry metrics stack neatly */
+  .live-telemetry-bar {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  /* Padding adjustments so content has breathing room */
+  .epic-landing-deck,
+  .projects-master-deck,
+  .identity-deep-deck,
+  .systems-deep-deck,
+  .terminal-deep-deck,
+  .project-detail-deck {
+    padding: 15px 14px 70px 14px !important;
+  }
+}
+
+/* 3. Schematic Diagrams Mobile Stack */
+@media (max-width: 768px) {
+  .schematic-flow {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .sch-node {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  .sch-arrow {
+    transform: rotate(90deg) !important;
+    margin: 8px 0 !important;
+  }
+
+  .ascii-code,
+  .spec-code-block pre,
+  .ascii-diagram-box pre {
+    white-space: pre !important;
+    overflow-x: auto !important;
+    font-size: 0.72rem !important;
+  }
+
+  .term-split {
+    grid-template-columns: 1fr !important;
+  }
+
+  .term-console {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15) !important;
+  }
+}
+/* ==========================================================================
+   GUARANTEED LASER SCANNER FIX (ACTIVE & GLOWING)
+   ========================================================================== */
+
+.laser-scanner {
+  position: absolute !important;
+  left: 16px !important;
+  right: 16px !important;
+  width: calc(100% - 32px) !important;
+  height: 3px !important;
+  background: #00f0ff !important;
+  box-shadow: 0 0 12px #00f0ff, 0 0 24px #00f0ff, 0 0 36px #00f0ff !important;
+  z-index: 99 !important;
+  pointer-events: none !important;
+  display: block !important;
+  border-radius: 999px !important;
+  animation: forceLaserScan 2.6s ease-in-out infinite alternate !important;
+}
+
+@keyframes forceLaserScan {
+  0% {
+    top: 20px;
+    opacity: 0.1;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 380px;
+    opacity: 0.1;
+  }
+}
+
+/* Mobile par laser ki height adjust */
+@media (max-width: 600px) {
+  @keyframes forceLaserScan {
+    0% {
+      top: 15px;
+      opacity: 0.1;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      top: 290px;
+      opacity: 0.1;
+    }
+  }
+}

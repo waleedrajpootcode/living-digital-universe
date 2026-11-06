@@ -20,6 +20,9 @@ export class Router {
     window.addEventListener('DOMContentLoaded', () => this.handleRoute());
     this.initAudioTriggers();
     this.initHudCoordinates();
+
+    // 👉 YEH LINE ADD KAREIN: Page open hote hi baghair click kiye CORE khol dega!
+    this.handleRoute();
   }
 
   initAudioTriggers() {
