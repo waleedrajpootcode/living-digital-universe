@@ -19,7 +19,15 @@
       "tagline": "Multi-Tenant Business Management & Intelligence System",
       "status": "In Development",
       "featured": true,
-      "techStack": ["React", "Vite", "Node.js", "Express", "Supabase", "PostgreSQL", "RLS"],
+      "techStack": [
+        "React",
+        "Vite",
+        "Node.js",
+        "Express",
+        "Supabase",
+        "PostgreSQL",
+        "RLS"
+      ],
       "problem": "SMEs deal with fragmented, insecure operational tools lacking granular data isolation.",
       "solution": "Engineered a scalable multi-tenant architecture with Row-Level Security (RLS) guaranteeing tenant data isolation.",
       "githubUrl": "https://github.com/waleedrajpootcode/BusinessOS.git",
@@ -34,7 +42,14 @@
       "tagline": "Resilient Offline-First Institutional Management System",
       "status": "Verified / Functional",
       "featured": true,
-      "techStack": ["React", "TypeScript", "Vite", "Node.js", "Fastify", "SQLite"],
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Node.js",
+        "Fastify",
+        "SQLite"
+      ],
       "problem": "Schools in intermittent-connectivity zones lose access to cloud-only management tools.",
       "solution": "Built an offline-first LAN application utilizing local SQLite, automated role permissions, and instant fee workflows.",
       "githubUrl": "https://github.com/waleedrajpootcode/SchoolOfficeAssistant.git",
@@ -49,7 +64,12 @@
       "tagline": "Peer-to-Peer Encrypted Real-Time Communication Pipeline",
       "status": "In Development",
       "featured": true,
-      "techStack": ["WebRTC", "JavaScript", "HTML5", "Node Signaling"],
+      "techStack": [
+        "WebRTC",
+        "JavaScript",
+        "HTML5",
+        "Node Signaling"
+      ],
       "problem": "Centralized messaging architectures expose communication metadata to intermediary servers.",
       "solution": "Architected direct peer-to-peer audio, video, screen share, and data transfers over WebRTC mesh connections.",
       "githubUrl": "https://github.com/waleedrajpootcode/Ghostchat-p2p.git",
@@ -64,7 +84,12 @@
       "tagline": "Voice Synthesis & Speech Intelligence Workbench",
       "status": "In Development",
       "featured": false,
-      "techStack": ["Python", "Flask", "Web Audio API", "JavaScript"],
+      "techStack": [
+        "Python",
+        "Flask",
+        "Web Audio API",
+        "JavaScript"
+      ],
       "problem": "Complex audio synthesis requires intuitive workflows with low-latency client-side playback.",
       "solution": "Created an AI-assisted voice processing pipeline integrating Web Audio playback with backend Python inference.",
       "githubUrl": "https://github.com/waleedrajpootcode/voxstudio-ai.git",
@@ -79,13 +104,36 @@
       "tagline": "AI-Assisted Animation Production Engine",
       "status": "Experimental Prototype",
       "featured": false,
-      "techStack": ["JavaScript", "Python", "Automation Pipelines"],
+      "techStack": [
+        "JavaScript",
+        "Python",
+        "Automation Pipelines"
+      ],
       "problem": "Traditional 2D/3D asset animation workflows require heavy manual keyframing.",
       "solution": "Building procedural automation sequences to accelerate digital animation rendering.",
       "githubUrl": "https://github.com/waleedrajpootcode/RRAWStudio.git",
       "demoUrl": "",
       "youtubeId": "",
       "coverImage": "assets/images/rrawstudio-cover.webp"
+    },
+    {
+      "id": "nexus-core",
+      "title": "Nexus Core",
+      "category": "Enterprise Suite / Sandbox",
+      "status": "Verified / Functional",
+      "tagline": "Enterprise Multi-Platform Web Suite & Real-Time Device Sandbox Runner",
+      "techStack": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Iframe Sandbox API",
+        "Zero-Dependencies"
+      ],
+      "youtubeId": "",
+      "problem": "Showcasing multi-sector applications (E-Commerce, B2B SaaS, Hospitality) typically demands fragmented deployments, excessive context switching, and slow client previews.",
+      "solution": "Architected a zero-dependency host container orchestrating 5 standalone runtime applications with real-time viewport emulation (Desktop, Laptop, Tablet, Mobile) and 100% Lighthouse scores.",
+      "githubUrl": "https://github.com/waleedrajpootcode/MY-PROJECTS-SUITE.git",
+      "demoUrl": "https://waleedrajpootcode.github.io/MY-PROJECTS-SUITE/"
     }
   ]
 }
