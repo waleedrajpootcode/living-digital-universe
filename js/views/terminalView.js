@@ -2,7 +2,7 @@ export function renderTerminalView(dev) {
   const email = dev ? dev.email : 'waleedrajpoot0096w@gmail.com';
   const phone = dev ? dev.phone : '+92 309 4686025';
   const github = dev ? dev.github : 'https://github.com/waleedrajpootcode';
-  const linkedin = dev ? dev.linkedin : 'https://www.linkedin.com/in/waleed-rajpoot-642842403/';
+  const linkedin = dev ? dev.linkedin : 'https://www.linkedin.com/in/waleedrajpootcode';
 
   return `
     <div class="terminal-deep-deck page-entry-anim">
